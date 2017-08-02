@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+
+body {
+
+}
+
+.navbar-brand {
+	font-size: 40px;
+	font-family: 'Indie Flower', cursive;
+}
+
+.period, .add, .total {
+	display: none;
+}
+
+span, input, select {
+	margin: 5px;
+}
+.form-control {
+	width: 15%;
+}
