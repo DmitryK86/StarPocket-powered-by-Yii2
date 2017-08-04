@@ -24,7 +24,6 @@ class TestForm extends Model {
 
 	public function rules() {
 		return [
-			['value', 'required'],
 			['value', 'double'],
 			[['date', 'dateFrom', 'dateTo', 'option'], 'trim'],
 		];

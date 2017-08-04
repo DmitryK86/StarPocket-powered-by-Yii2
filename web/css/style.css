@@ -19,3 +19,14 @@ span, input, select {
 .form-control {
 	width: 15%;
 }
+.table-container {
+	width: 50%;
+	margin-top: 10px;
+	display: none;
+}
+.result {
+	height: 30px;
+	margin-top: 10px;
+	padding: 10px;
+	display: none;
+}

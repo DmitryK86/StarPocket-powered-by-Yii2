@@ -1,10 +1,10 @@
 <?php
 
-function isOption($opt){
+function createQuery($opt, $ip){
 	if ($opt == 'all') {
-		return 'SELECT date, value, opt FROM demo_pocket WHERE date BETWEEN :dateFrom AND :dateTo';
+		return 'SELECT date, value, opt FROM demo_pocket WHERE ip=\''.$ip.'\' AND date BETWEEN :dateFrom AND :dateTo';
 	}else{
-		return 'SELECT date, value, opt FROM demo_pocket WHERE opt=:opt AND date BETWEEN :dateFrom AND :dateTo';
+		return 'SELECT date, value, opt FROM demo_pocket WHERE opt=:opt AND ip=\''.$ip.'\' AND date BETWEEN :dateFrom AND :dateTo';
 	}
 }
 
