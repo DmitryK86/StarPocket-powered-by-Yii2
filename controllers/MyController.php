@@ -5,6 +5,7 @@ use yii\web\Controller;
 use yii\web\Session;
 use app\models\DemoIn;
 use app\models\DemoOut;
+use app\models\LoginForm;
 require __DIR__.'/../functions.php';
 
 use Yii;
@@ -86,18 +87,22 @@ class MyController extends Controller
 		}
 	}
 
-	public function actionLogin()
-	{
+	
 
-		$opt = 'all';
-		$ip = $_SERVER['REMOTE_ADDR'];
-		$dateFrom = '2017-01-01';
-		$dateTo = '2017-08-04';
-		$query = createQuery($opt, $ip);
+		public function actionLogin()
+    {
+        if (!Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
 
-		$demo = DemoOut::findBySql($query, [':dateFrom'=>$dateFrom, ':dateTo'=>$dateTo])->asArray()->all();
-
-		return $this->render('login', compact('query', 'demo'));
+        $model = new LoginForm();
+        if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            return $this->goBack();
+        }
+        return $this->render('login', [
+            'model' => $model,
+        ]);
+    }
 		
-	}
+	
 }

@@ -16,7 +16,7 @@ body {
 span, input, select {
 	margin: 5px;
 }
-.form-control {
+#w0, #w1, #w2 .form-control {
 	width: 15%;
 }
 .table-container {

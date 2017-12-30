@@ -21,7 +21,7 @@ class DemoIn extends ActiveRecord {
 	public function rules() {
 		return [
 			['value', 'required'],
-			['value', 'double'],
+			['value', 'integer'],
 			[['date', 'opt'], 'trim'],
 		];
 	}
