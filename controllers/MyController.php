@@ -6,6 +6,7 @@ use yii\web\Session;
 use app\models\DemoIn;
 use app\models\DemoOut;
 use app\models\LoginForm;
+use yii\web\Response;
 require __DIR__.'/../functions.php';
 
 use Yii;
@@ -102,6 +103,18 @@ class MyController extends Controller
         return $this->render('login', [
             'model' => $model,
         ]);
+    }
+
+    /**
+     * Logout action.
+     *
+     * @return Response
+     */
+    public function actionLogout()
+    {
+        Yii::$app->user->logout();
+
+        return $this->goHome();
     }
 		
 	

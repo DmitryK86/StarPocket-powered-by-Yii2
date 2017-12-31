@@ -26,7 +26,12 @@ AppAsset::register($this);
 			<ul class="nav navbar-nav navbar-right">
 				<li><?= Html::a('Главная', ['my/index']);?></li>
 				<li><?= Html::a('Пробовать демо', ['my/demo']);?></li>
-				<li><?= Html::a('Вход/Регистрация', ['my/login']);?></li>
+                <?php if (Yii::$app->user->isGuest):?>
+				<li><?= Html::a('Вход', ['my/login']);?></li>
+				<li><?= Html::a('Регистрация', ['my/register']);?></li>
+                <?php else:?>
+                <li><?= Html::a('Выход', ['my/logout']);?></li>
+                <?php endif; ?>
 			</ul>
 		</div>
 	</nav>
