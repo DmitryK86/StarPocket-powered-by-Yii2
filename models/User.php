@@ -21,6 +21,11 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
         return 'users';
     }
 
+    public static function model()
+    {
+        return new static();
+    }
+
     /**
      * @inheritdoc
      */
@@ -85,7 +90,8 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
      */
     public function generateAuthKey()
     {
-        $this->auth_key = \Yii::$app->security->generateRandomKey();
+        $this->auth_key = \Yii::$app->security->generateRandomString();
+        return $this;
     }
 
     /**

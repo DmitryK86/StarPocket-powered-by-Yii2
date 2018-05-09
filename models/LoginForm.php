@@ -57,7 +57,7 @@ class LoginForm extends Model
             $user = $this->getUser();
 
             if (!$user || !$user->validatePassword($this->password)) {
-                $this->addError($attribute, 'Incorrect username or password.');
+                $this->addError($attribute, 'Неверный пароль.');
             }
         }
     }
@@ -69,7 +69,7 @@ class LoginForm extends Model
     public function login()
     {
         if ($this->rememberMe) {
-            $this->getUser()->generateAuthKey();
+            $this->getUser()->generateAuthKey()->save();
         }
         if ($this->validate()) {
             return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600*24*30 : 0);
